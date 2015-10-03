@@ -58,7 +58,7 @@ def turn(playr):
   pB()
   # A bool to tell program if someone picked correct space
   cS = False
-  while cS = False:
+  while cS == False:
     try:
       s = int(raw_input('Pick a space (1-9): ')) - 1
       cS = True
