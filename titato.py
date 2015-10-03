@@ -2,4 +2,5 @@
 def pBoard():
    print 'HELLO WORLD'
   
-pBoard()
+print 'This is amazing!'
+
