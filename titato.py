@@ -25,4 +25,5 @@ def pB():
   print '   |   |   '
   print board[6] + '  | ' + board[7] + ' |  ' + board[8]
 
-pB()
+# Function to check for winner
+def check_win():
