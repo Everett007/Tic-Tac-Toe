@@ -3,12 +3,13 @@
 import os
 import random
 import sys
+import time
 
 # Defining global variables
+turns = 0
 board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 p1 = 'X'
 p2 = 'O'
-turns = 0
 
 # Function to clear screen
 def cls():
@@ -29,7 +30,11 @@ def pB():
 
 # Function for if/when someone wins
 def win(plyer):
+  cls()
+  print '*********'
   print '%s WINS!' % plyer
+  print '*********'
+  time.sleep(1)
   sys.exit(0)
 
 # Function to check for winner
@@ -38,7 +43,7 @@ def check_win(player):
     win(player)
   elif board[3]==player and board[4]==player and board[5]==player:
     win(player)
-  elif baord[6]==player and board[7]==player and board[8]==player:
+  elif board[6]==player and board[7]==player and board[8]==player:
     win(player)
   elif board[0]==player and board[3]==player and board[6]==player:
     win(player)
@@ -50,12 +55,14 @@ def check_win(player):
     win(player)
   elif board[2]==player and board[4]==player and board[6]==player:
     win(player)
-  else:
-    turns += 1
+
+# A little javascript function for my purposes
+def prompt(question):
+  nS = int(raw_input(str(question))) - 1
+  return nS
 
 # Turn function
 def turn(playr):
-  pB()
   # A bool to tell program if someone picked correct space
   cS = False
   while cS == False:
@@ -63,20 +70,35 @@ def turn(playr):
       s = int(raw_input('Pick a space (1-9): ')) - 1
       cS = True
     except:
-      print 'There was an error!'
+      print 'That is invalid!'
     
   # A bool to tell program someone picked correct space again
   cSA = False
   while cSA == False:
-    if board[s] == ' ':
-      board[s] = playr
-      cSA = True
-    else:
-      print 'That spot is already taken!'
+    try:
+      if board[s] == ' ':
+        board[s] = playr
+        cSA = True
+      else:
+        print 'Spot taken!'
+        pB()
+        print ''
+    except:
+      s = prompt('Pick a space (1-9): ')
 
 # Main loop:
 while turns < 9:
+  pB()
+  print ''
   turn(p1)
+  turns += 1
+  pB()
+  print ''
   check_win(p1)
+  pB()
+  print ''
   turn(p2)
+  turns += 1
+  pB()
+  print ''
   check_win(p2)
