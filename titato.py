@@ -58,8 +58,15 @@ def check_win(player):
 
 # A little javascript function for my purposes
 def prompt(question):
-  nS = int(raw_input(str(question))) - 1
-  return nS
+  # A bool to see if there is still help needed
+  hN = True
+  while hN == True:
+    try:
+      nS = int(raw_input(str(question))) - 1
+      return nS
+      hN = False
+    except:
+      print 'Invalid!'
 
 # Turn function
 def turn(playr):
@@ -83,6 +90,7 @@ def turn(playr):
         print 'Spot taken!'
         pB()
         print ''
+        s = prompt('Pick a space (1-9): ')
     except:
       s = prompt('Pick a space (1-9): ')
 
