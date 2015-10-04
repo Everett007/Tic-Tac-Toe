@@ -8,4 +8,4 @@ It's important to learn how to communicate with the computers.
 Or program them, at least :)
 # How did I learn?
 With a lot of help from people.
-My parents helped me a lot as well as my schoole teachers.
+My parents helped me a lot as well as my school teachers.
