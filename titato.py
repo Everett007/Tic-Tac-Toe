@@ -37,6 +37,19 @@ def win(plyer):
   time.sleep(1)
   sys.exit(0)
 
+# A function for a tie
+def tie():
+  cls()
+  print '*********'
+  print 'Tie!'
+  print '*********'
+  time.sleep(1.5)
+  for i in range(0, len(board)):
+    board[i] = ' '
+
+  turns = 0
+  cls()
+
 # Function to check for winner
 def check_win(player):
   if board[0]==player and board[1]==player and board[2]==player:
@@ -55,6 +68,17 @@ def check_win(player):
     win(player)
   elif board[2]==player and board[4]==player and board[6]==player:
     win(player)
+
+  # A variable to help the for statement
+  iT = 0
+  for i in range(0, len(board)):
+    if board[i] != ' ':
+      iT = iT + 1
+    else:
+      return
+
+  if iT == 9:
+    tie()
 
 # A little javascript function for my purposes
 def prompt(question):
@@ -78,7 +102,7 @@ def turn(playr):
       cS = True
     except:
       print 'That is invalid!'
-    
+
   # A bool to tell program someone picked correct space again
   cSA = False
   while cSA == False:
@@ -95,18 +119,18 @@ def turn(playr):
       s = prompt('Pick a space (1-9): ')
 
 # Main loop:
-while turns < 9:
+while True:
   pB()
   print ''
   turn(p1)
-  turns += 1
+  turns = turns + 1
   pB()
   print ''
   check_win(p1)
   pB()
   print ''
   turn(p2)
-  turns += 1
+  turns = turns + 1
   pB()
   print ''
   check_win(p2)
